@@ -1,5 +1,5 @@
-# blog
-Vim4US | Blog and related resources
+# Vim4US | Blog 
+Blog and related resources
 
 ## 👋 Hi there! Thanks for visiting this page 
 We are Vim4Us, a project proudly supported by [HildenCo Software](//www.hildenco.com).
