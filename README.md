@@ -15,6 +15,10 @@ Check our blog at: [vim4us.com](https://www.vim4us.com)
 
 And more to come 😊
 
+# Our Articles
+* [Why use Vim](https://www.vim4us.com/2020/10/why-use-vim.html)
+* [Installing Vim on Linux](https://www.vim4us.com/2020/10/installing-vim-on-linux.html)
+
 # 📫 Reaching out...
 Reach out to us on [Twitter](https://twitter.com/vim4us).
 
