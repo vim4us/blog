@@ -7,3 +7,7 @@ Excited to try #Vim on #Linux? Learn how to install it on #Ubuntu/#Fedora/#CentO
 and other popular distros
 #foss #opensource #development
 https://www.vim4us.com/2020/10/installing-vim-on-linux.html
+
+New #Vim user? Learn how to install it on #MacOS and start using Vim
+#foss #opensource #development
+https://www.vim4us.com/2020/10/installing-vim-on-mac.html
