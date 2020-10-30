@@ -1143,6 +1143,14 @@ td.tr-caption {
     font-family: Georgia, serif;
 }
 
+.rss {
+  background-color: #f57c00;
+  color: #white;
+  display: inline-block;
+  padding: 0 .8em;
+  margin-left: .8em;
+}
+
 ]]></b:skin>
     <b:template-skin>
       <b:variable default='960px' name='content.width' type='length' value='1020px'/>
@@ -1344,6 +1352,7 @@ Tips in tricks to learn and master Vim
   &lt;a href=&quot;/p/privacy.html&quot;&gt;Privacy&lt;/a&gt;
   &lt;a href=&quot;/p/about.html&quot;&gt;About Us&lt;/a&gt;
   &lt;a href=&quot;/p/contact.html&quot;&gt;Contact&lt;/a&gt;
+  &lt;a href=&quot;https:/feeds/posts/default&quot; class=&quot;rss&quot; target=&quot;_blank&quot;&gt;RSS&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</b:widget-setting>
           </b:widget-settings>
@@ -1380,16 +1389,7 @@ Tips in tricks to learn and master Vim
     <div class='fauxborder-right tabs-fauxborder-right'/>
     <div class='region-inner tabs-inner'>
       <b:section class='tabs' id='crosscol' maxwidgets='1' name='Cross-Column' showaddelement='yes'/>
-      <b:section class='tabs' id='crosscol-overflow' name='Cross-Column 2' showaddelement='no'>
-        <b:widget id='AdSense1' locked='false' title='' type='AdSense'>
-          <b:includable id='main'>
-  <div class='widget-content'>
-    <data:adCode/>
-    <b:include name='quickedit'/>
-  </div>
-</b:includable>
-        </b:widget>
-      </b:section>
+      <b:section class='tabs' id='crosscol-overflow' name='Cross-Column 2' showaddelement='no'/>
     </div>
     </div>
     <div class='tabs-cap-bottom cap-bottom'>
@@ -2372,14 +2372,6 @@ Tips in tricks to learn and master Vim
   <b:include name='quickedit'/>
 </b:includable>
             </b:widget>
-            <b:widget id='AdSense2' locked='false' title='' type='AdSense'>
-              <b:includable id='main'>
-  <div class='widget-content'>
-    <data:adCode/>
-    <b:include name='quickedit'/>
-  </div>
-</b:includable>
-            </b:widget>
             <b:widget id='FeaturedPost1' locked='false' mobile='yes' title='Featured Article' type='FeaturedPost'>
               <b:widget-settings>
                 <b:widget-setting name='showSnippet'>true</b:widget-setting>
@@ -2592,6 +2584,32 @@ Tips in tricks to learn and master Vim
     <b:include name='quickedit'/>
   </b:includable>
   </b:widget>
+  <b:widget id='FollowByEmail1' locked='false' title='Follow by Email' type='FollowByEmail'>
+    <b:includable id='main'>
+  <b:if cond='data:title != &quot;&quot;'><h2 class='title'><data:title/></h2></b:if>
+  <div class='widget-content'>
+    <div class='follow-by-email-inner'>
+      <form action='https://feedburner.google.com/fb/a/mailverify' expr:onsubmit='&quot;window.open(\&quot;https://feedburner.google.com/fb/a/mailverify?uri=&quot; + data:feedPath + &quot;\&quot;, \&quot;popupwindow\&quot;, \&quot;scrollbars=yes,width=550,height=520\&quot;); return true&quot;' method='post' target='popupwindow'>
+        <table width='100%'>
+          <tr>
+            <td>
+              <input class='follow-by-email-address' name='email' placeholder='Email address...' type='text'/>
+            </td>
+            <td width='64px'>
+              <input class='follow-by-email-submit' type='submit' value='Submit'/>
+            </td>
+          </tr>
+        </table>
+        <input expr:value='data:feedPath' name='uri' type='hidden'/>
+        <input name='loc' type='hidden' value='en_US'/>
+      </form>
+    </div>
+  </div>
+  <span class='item-control blog-admin'>
+    <b:include name='quickedit'/>
+  </span>
+</b:includable>
+  </b:widget>
   <b:widget id='HTML7' locked='false' title='' type='HTML'>
     <b:widget-settings>
       <b:widget-setting name='content'>&lt;h2&gt;Follow Us:&lt;/h2&gt;
@@ -2703,14 +2721,6 @@ Tips in tricks to learn and master Vim
   </div>
 </b:includable>
   </b:widget>
-  <b:widget id='AdSense3' locked='false' title='' type='AdSense'>
-    <b:includable id='main'>
-  <div class='widget-content'>
-    <data:adCode/>
-    <b:include name='quickedit'/>
-  </div>
-</b:includable>
-  </b:widget>
   <b:widget id='HTML2' locked='false' title='' type='HTML'>
     <b:widget-settings>
       <b:widget-setting name='content'>&lt;h4&gt;Recent Tweets&lt;/h4&gt;
@@ -2731,7 +2741,7 @@ Tips in tricks to learn and master Vim
 </b:section-contents><b:section-contents id='footer-1'>
   <b:widget id='HTML6' locked='false' mobile='yes' title='' type='HTML'>
     <b:widget-settings>
-      <b:widget-setting name='content'><![CDATA[Is this website helpful to you? Please consider sharing posts and <a href="/p/contact.html">sending your feedback</a>. Thanks!]]></b:widget-setting>
+      <b:widget-setting name='content'><![CDATA[Is this website helpful to you? Please consider subscribing, sharing posts and <a href="//twitter.com/vim4us">sending your feedback</a>.]]></b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
@@ -2756,12 +2766,13 @@ Tips in tricks to learn and master Vim
 &lt;a href=&quot;/p/books.html&quot;&gt;Books&lt;/a&gt; |
 &lt;a href=&quot;/p/contact.html&quot;&gt;Contact&lt;/a&gt; |
 &lt;a href=&quot;//github.com/vim4us&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt; |
-&lt;a href=&quot;//www.vim4us.com/feeds/posts/default&quot; target=&quot;_blank&quot;&gt;RSS&lt;/a&gt;
+&lt;a href=&quot;//twitter.com/vim4us&quot; target=&quot;_blank&quot;&gt;Twitter&lt;/a&gt; |
+  &lt;a href=&quot;https:/feeds/posts/default&quot; class=&quot;rss&quot; target=&quot;_blank&quot;&gt;RSS&lt;/a&gt;
  &lt;/p&gt;
 
 &lt;p&gt;Vim4Us | Tips in tricks to learn and master Vim&lt;/p&gt;
 &lt;p&gt;2020 &#169; &lt;a href=&quot;//www.hildenco.com&quot; target=&quot;_blank&quot;&gt;HildenCo Software&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt; Made with 🧡 in Canada&lt;/p&gt;
+&lt;p&gt; Made with &#9829; in Canada&lt;/p&gt;
 
 &lt;/div&gt;</b:widget-setting>
     </b:widget-settings>
