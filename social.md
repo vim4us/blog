@@ -8,6 +8,10 @@ and other popular distros
 #foss #opensource #development
 https://www.vim4us.com/2020/10/installing-vim-on-linux.html
 
-New #Vim user? Learn how to install it on #MacOS and start using Vim
-#foss #opensource #development
+New #Vim user? Learn how to install it on #MacOS and start using Vim right away!
+#foss #opensource #development #macos
 https://www.vim4us.com/2020/10/installing-vim-on-mac.html
+
+New #Vim user? Learn how to install it on #Windows and start using Vim right away!
+#foss #opensource #development
+https://www.vim4us.com/2020/11/installing-vim-on-windows.html
