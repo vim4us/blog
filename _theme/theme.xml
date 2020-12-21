@@ -434,6 +434,10 @@ header {
   display: none;
 }
 
+.mobile .item-thumbnail {
+  float: left;
+  padding-right: 1em;
+}
 
 .post-header {
   margin: 0 0 1.5em;
@@ -763,13 +767,14 @@ div.PopularPosts h2 {
   list-style: none;
 }
 
-#PopularPosts1, #PopularPosts2 {
-   border-bottom: 1px solid #dddddd;
-   height: 500px
+.mobile #PopularPosts2 {
+  padding: 1em;
 }
 
 .item-snippet {
-   font-size: 12px;
+  font-family: Georgia, Times, serif;
+  font-style: italic;
+  font-size: 12px;
 }
 
 #l4u-header .alignleft a {
@@ -1155,7 +1160,7 @@ td.tr-caption {
     <b:template-skin>
       <b:variable default='960px' name='content.width' type='length' value='1020px'/>
       <b:variable default='0' name='main.column.left.width' type='length' value='0px'/>
-      <b:variable default='310px' name='main.column.right.width' type='length' value='280px'/>
+      <b:variable default='310px' name='main.column.right.width' type='length' value='300px'/>
 
       <![CDATA[
       body {
@@ -1349,7 +1354,6 @@ Tips in tricks to learn and master Vim
   &lt;a href=&quot;/&quot;&gt;Home&lt;/a&gt;
   &lt;a href=&quot;/p/books.html&quot;&gt;Books&lt;/a&gt;
   &lt;a href=&quot;/p/contribute.html&quot;&gt;Contribute&lt;/a&gt;
-  &lt;a href=&quot;/p/privacy.html&quot;&gt;Privacy&lt;/a&gt;
   &lt;a href=&quot;/p/about.html&quot;&gt;About Us&lt;/a&gt;
   &lt;a href=&quot;/p/contact.html&quot;&gt;Contact&lt;/a&gt;
   &lt;a href=&quot;https:/feeds/posts/default&quot; class=&quot;rss&quot; target=&quot;_blank&quot;&gt;RSS&lt;/a&gt;
@@ -2411,6 +2415,54 @@ Tips in tricks to learn and master Vim
   </style>
 </b:includable>
             </b:widget>
+            <b:widget id='PopularPosts2' locked='false' mobile='yes' title='Popular Posts' type='PopularPosts'>
+              <b:widget-settings>
+                <b:widget-setting name='numItemsToShow'>5</b:widget-setting>
+                <b:widget-setting name='showThumbnails'>true</b:widget-setting>
+                <b:widget-setting name='showSnippets'>true</b:widget-setting>
+                <b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
+              </b:widget-settings>
+              <b:includable id='main'>
+  <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
+  <div class='widget-content popular-posts'>
+    <ul>
+      <b:loop values='data:posts' var='post'>
+      <li>
+        <b:if cond='!data:showThumbnails'>
+          <b:if cond='!data:showSnippets'>
+            <!-- (1) No snippet/thumbnail -->
+            <a expr:href='data:post.href'><data:post.title/></a>
+          <b:else/>
+            <!-- (2) Show only snippets -->
+            <div class='item-title'><a expr:href='data:post.href'><data:post.title/></a></div>
+            <div class='item-snippet'><data:post.snippet/></div>
+          </b:if>
+        <b:else/>
+          <!-- (3) Show only thumbnails or (4) Snippets and thumbnails. -->
+          <div expr:class='data:showSnippets ? &quot;item-content&quot; : &quot;item-thumbnail-only&quot;'>
+            <b:if cond='data:post.featuredImage.isResizable or data:post.thumbnail'>
+              <div class='item-thumbnail'>
+                <a expr:href='data:post.href' target='_blank'>
+                  <b:with value='data:post.featuredImage.isResizable                                  ? resizeImage(data:post.featuredImage, 72, &quot;1:1&quot;)                                  : data:post.thumbnail' var='image'>
+                    <img alt='' border='0' expr:src='data:image'/>
+                  </b:with>
+                </a>
+              </div>
+            </b:if>
+            <div class='item-title'><a expr:href='data:post.href'><data:post.title/></a></div>
+            <b:if cond='data:showSnippets'>
+              <div class='item-snippet'><data:post.snippet/></div>
+            </b:if>
+          </div>
+          <div style='clear: both;'/>
+        </b:if>
+      </li>
+      </b:loop>
+    </ul>
+    <b:include name='quickedit'/>
+  </div>
+</b:includable>
+            </b:widget>
           </b:section>
         </div>
         </div>
@@ -2633,7 +2685,7 @@ Tips in tricks to learn and master Vim
       <b:widget-setting name='display'>CLOUD</b:widget-setting>
       <b:widget-setting name='selectedLabelsList'/>
       <b:widget-setting name='showType'>ALL</b:widget-setting>
-      <b:widget-setting name='showFreqNumbers'>true</b:widget-setting>
+      <b:widget-setting name='showFreqNumbers'>false</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:if cond='data:title != &quot;&quot;'>
@@ -2675,10 +2727,10 @@ Tips in tricks to learn and master Vim
   </b:widget>
   <b:widget id='PopularPosts1' locked='false' title='Popular this Week' type='PopularPosts'>
     <b:widget-settings>
-      <b:widget-setting name='numItemsToShow'>10</b:widget-setting>
+      <b:widget-setting name='numItemsToShow'>3</b:widget-setting>
       <b:widget-setting name='showThumbnails'>true</b:widget-setting>
       <b:widget-setting name='showSnippets'>true</b:widget-setting>
-      <b:widget-setting name='timeRange'>LAST_WEEK</b:widget-setting>
+      <b:widget-setting name='timeRange'>LAST_MONTH</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <b:if cond='data:title != &quot;&quot;'><h2><data:title/></h2></b:if>
@@ -2724,7 +2776,7 @@ Tips in tricks to learn and master Vim
   <b:widget id='HTML2' locked='false' title='' type='HTML'>
     <b:widget-settings>
       <b:widget-setting name='content'>&lt;h4&gt;Recent Tweets&lt;/h4&gt;
-&lt;a class=&quot;twitter-timeline&quot; data-width=&quot;500&quot; data-height=&quot;300&quot; data-tweet-limit=&quot;3&quot; data-chrome=&quot;noheader nofooter noborders&quot; href=&quot;https://twitter.com/vim4us?ref_src=twsrc%5Etfw&quot;&gt;&lt;/a&gt; &lt;script async=&quot;async&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot; &gt;&lt;/script&gt;</b:widget-setting>
+&lt;a class=&quot;twitter-timeline&quot; data-width=&quot;500&quot; data-height=&quot;300&quot; data-tweet-limit=&quot;2&quot; data-chrome=&quot;noheader nofooter noborders&quot; href=&quot;https://twitter.com/vim4us?ref_src=twsrc%5Etfw&quot;&gt;&lt;/a&gt; &lt;script async=&quot;async&quot; src=&quot;https://platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot; &gt;&lt;/script&gt;</b:widget-setting>
     </b:widget-settings>
     <b:includable id='main'>
   <!-- only display title if it's non-empty -->
