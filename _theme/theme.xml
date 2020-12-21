@@ -1150,10 +1150,15 @@ td.tr-caption {
 
 .rss {
   background-color: #f57c00;
-  color: #white;
+  color: white !important;
   display: inline-block;
   padding: 0 .8em;
   margin-left: .8em;
+}
+
+
+.cloud-label-widget-content {
+  word-spacing: .5em;
 }
 
 ]]></b:skin>
